@@ -13,11 +13,3 @@ test('renders learn react', () => {
     const linkElement = screen.getByText(/learn react/i);
     expect(linkElement).toBeInTheDocument();
   });
-
-// Dummy test for testing docker service
-test('false', () => {
-    expect(false).toBeInTheDocument();
-    render(<App />);
-    const linkElement = screen.getByText(/learn react/i);
-    expect(linkElement).toBeInTheDocument();
-});
