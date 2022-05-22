@@ -7,5 +7,20 @@ services:
 before_install: 
   - docker build -t octavio/react:latest -f Dockerfile.dev .
 
+# Running tasks on the image
 script:
   - docker run -e CI=true octavio/react:latest npm run test
+
+# How Travis CI should deploy it to AWS
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker-ci-cd-deploy"
+  env: "Dockercicddeploy-env"
+  bucket_name: "elasticbeanstalk-us-east-1-058881246294"
+  bucket_path: "docker-ci-cd-deploy"
+  on:
+    branch: main
+
+access_key_id: $AWS_ACCESS_KEY
+secret_access_key: $AWS_SECRET_KEY
