@@ -9,5 +9,6 @@ RUN npm run build
 
 # Next stage - nginx server - 110% production appropriate
 FROM nginx
+EXPOSE 80
 # I want to copy over something over something already done in a different phase
 COPY --from=builder /app/build /usr/share/nginx/html
